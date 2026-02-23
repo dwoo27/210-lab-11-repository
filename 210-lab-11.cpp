@@ -25,10 +25,23 @@ int main()
 
 void inputEmp(Employee* eptr) {
     static int count = 1;
+    string buf;
+
     cout << "Input data for Employee #" << count << ":" << endl;
+    
     cout << "Name: ";
     getline(cin, eptr->name);
-    d
+
+    cout << "Wage: ";
+    cin >> buf; eptr->wage = atof(buf.c_str());
+    cin.ignore(1000, 10);
+
+    cout << "Phone Number: ";
+    cin >> buf; eptr->phone = atoi(buf.c_str());
+    cin.ignore(1000, 10);
+
+    eptr->tasks = new 
+
 
 }
 
