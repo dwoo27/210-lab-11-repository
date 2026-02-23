@@ -7,6 +7,7 @@ struct Employee {
     string name;
     double wage;
     int phone; 
+    int numTasks;
     string* tasks;
 
     ~Employee() {
@@ -40,9 +41,32 @@ void inputEmp(Employee* eptr) {
     cin >> buf; eptr->phone = atoi(buf.c_str());
     cin.ignore(1000, 10);
 
-    eptr->tasks = new 
 
+    cout << "Number of Tasks: ";
+    cin >> buf; eptr->numTasks = atoi(buf.c_str());
+    cin.ignore(1000, 10);
+    
+    eptr->tasks = new string[eptr->numTasks];
+    for (int i = 0; i < eptr->numTasks; i++) {
+        cout << "Task # " << i + 1 << ": ";
+        getline(cin, eptr->tasks[i]);
+    }
 
+    cout << endl;
+    count++;
+}
+
+void displayEmp(Employee* eptr) {
+    cout << "Employee Summary: " << endl;
+    cout << "Name: " << eptr->name << endl;
+    cout << "Wage: " << eptr->wage << endl;
+    cout << "Phone Number: " << eptr->phone << endl;
+    cout << "Number of Tasks: " << eptr->numTasks << endl;
+    
+    for (int i = 0; i < eptr->numTasks; i++) {
+        cout << "Task # " << i + 1 << ": ";
+        getline(cin, eptr->tasks[i]);
+    }
 }
 
 
