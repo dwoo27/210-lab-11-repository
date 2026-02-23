@@ -3,6 +3,8 @@
 #include<string>
 using namespace std;
 
+const int NUM_EMP = 2;
+
 struct Employee {
     string name;
     double wage;
@@ -21,7 +23,16 @@ void displayEmp(Employee*);
 
 int main()
 {
-    
+    Employee* staff = new Employee[NUM_EMP];
+
+    for (int i = 0; i < NUM_EMP; i++) {
+        inputEmp(&staff[i]);
+    }
+    for (int i = 0; i < NUM_EMP; i++) {
+        displayEmp(&staff[i]);
+    }
+
+    delete[] staff;
 }
 
 void inputEmp(Employee* eptr) {
@@ -61,12 +72,13 @@ void displayEmp(Employee* eptr) {
     cout << "Name: " << eptr->name << endl;
     cout << "Wage: " << eptr->wage << endl;
     cout << "Phone Number: " << eptr->phone << endl;
-    cout << "Number of Tasks: " << eptr->numTasks << endl;
+    cout << "Tasks: " << endl;
     
     for (int i = 0; i < eptr->numTasks; i++) {
-        cout << "Task # " << i + 1 << ": ";
-        getline(cin, eptr->tasks[i]);
+        cout << " - " << eptr->tasks[i] << endl;
     }
+
+    cout << endl;
 }
 
 
